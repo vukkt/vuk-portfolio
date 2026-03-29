@@ -1,0 +1,174 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body, #root {
+  height: 100%;
+}
+
+body {
+  background-color: #000000;
+  color: rgb(171, 167, 182);
+  font-family: "IBM Plex Mono", monospace;
+  line-height: 1.5;
+}
+
+/* Page container */
+.page {
+  min-height: 100vh;
+  margin: 0;
+  background-color: #000000;
+  color: rgb(171, 167, 182);
+  font-family: "IBM Plex Mono", monospace;
+}
+
+/* Main container */
+.container {
+  width: min(100% - 2rem, 960px);
+  margin: 0 auto;
+  padding: 4rem 0 6rem;
+}
+
+/* Hero section */
+.hero {
+  padding: 2rem 0 4rem;
+}
+
+.eyebrow {
+  margin: 0 0 1rem;
+  opacity: 0.8;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-size: 0.9rem;
+}
+
+.title {
+  margin: 0 0 1rem;
+  color: rgb(255, 87, 10);
+  font-size: clamp(2.5rem, 8vw, 5rem);
+  line-height: 1;
+  font-weight: 700;
+}
+
+.subtitle {
+  margin: 0 0 1.5rem;
+  max-width: 60ch;
+  font-size: 1.05rem;
+  line-height: 1.7;
+}
+
+.actions {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-top: 2rem;
+}
+
+/* Buttons */
+.button {
+  display: inline-block;
+  padding: 0.85rem 1.1rem;
+  text-decoration: none;
+  border: 1px solid;
+  transition: all 0.2s ease;
+  cursor: pointer;
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 1rem;
+}
+
+.button-primary {
+  background-color: rgb(255, 87, 10);
+  color: #000000;
+  border-color: rgb(255, 87, 10);
+  font-weight: 700;
+}
+
+.button-primary:hover {
+  background-color: #ff6a1f;
+  box-shadow: 0 0 12px rgba(255, 87, 10, 0.4);
+}
+
+.button-secondary {
+  background-color: transparent;
+  color: rgb(171, 167, 182);
+  border-color: rgba(171, 167, 182, 0.28);
+  font-weight: 500;
+}
+
+.button-secondary:hover {
+  border-color: rgb(255, 87, 10);
+  color: rgb(255, 87, 10);
+  box-shadow: 0 0 8px rgba(255, 87, 10, 0.25);
+}
+
+.button:active {
+  transform: translateY(1px) scale(0.98);
+}
+
+/* Sections */
+.section {
+  padding: 2.5rem 0;
+  border-top: 1px solid rgba(171, 167, 182, 0.18);
+}
+
+.section-title {
+  margin: 0 0 1rem;
+  color: rgb(255, 87, 10);
+  font-size: 1.4rem;
+}
+
+.paragraph {
+  margin: 0 0 1rem;
+  max-width: 70ch;
+  line-height: 1.7;
+}
+
+/* Project grid */
+.project-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+.card {
+  border: 1px solid rgba(171, 167, 182, 0.18);
+  padding: 1rem;
+  background-color: rgba(255, 255, 255, 0.01);
+}
+
+.card-title {
+  margin: 0 0 0.75rem;
+  color: rgb(255, 87, 10);
+  font-size: 1rem;
+}
+
+.card-text {
+  margin: 0;
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+/* Footer */
+.footer {
+  padding-top: 2rem;
+  opacity: 0.8;
+  font-size: 0.9rem;
+}
+
+/* Links */
+a {
+  color: rgb(171, 167, 182);
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+a:hover {
+  opacity: 0.9;
+}
+
+a:active {
+  transform: translateY(1px) scale(0.98);
+}
