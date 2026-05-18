@@ -1,0 +1,41 @@
+.edu-lang__grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  margin-top: 1.5rem;
+}
+
+.edu-lang__col {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.edu-lang__entry {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.edu-lang__title {
+  font-size: var(--font-size-sm);
+  color: var(--text-primary);
+  font-weight: 600;
+}
+
+.edu-lang__institution {
+  font-size: var(--font-size-xs);
+  color: var(--text-secondary);
+}
+
+.edu-lang__period {
+  font-size: var(--font-size-xs);
+  color: var(--text-muted);
+  letter-spacing: var(--letter-spacing-wide);
+}
+
+@media (max-width: 600px) {
+  .edu-lang__grid {
+    grid-template-columns: 1fr;
+  }
+}

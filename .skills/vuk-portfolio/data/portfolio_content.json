@@ -1,0 +1,155 @@
+{
+  "identity": {
+    "name": "Vuk Topalovic",
+    "handle": "vukkt",
+    "tagline": "Full-stack engineer. Production systems, distributed architecture, AI-integrated fullstack.",
+    "location": "Belgrade, Serbia",
+    "status": "Available for senior remote contracts",
+    "email": "vuk.topalovic@gmail.com",
+    "phone": "+381 65 444 84 39",
+    "links": {
+      "github": "https://github.com/vukkt",
+      "linkedin": "https://linkedin.com/in/vuktopalovic",
+      "email": "mailto:vuk.topalovic@gmail.com"
+    }
+  },
+  "hero": {
+    "title": "VUK TOPALOVIC",
+    "subtitle": "SENIOR FULL-STACK ENGINEER",
+    "pillars": ["PRODUCTION SYSTEMS", "DISTRIBUTED ARCHITECTURE", "AI-INTEGRATED FULLSTACK"],
+    "intro": "I build production systems across the full stack. React, TypeScript, Node.js on the front. Java, Spring Boot, microservices on the back. Currently going deep on LLM-integrated fullstack."
+  },
+  "about": {
+    "summary": [
+      "Full-stack engineer with 5+ years building production systems for European R&D and product companies.",
+      "Self-directed contractor experienced in distributed remote teams. I take features from requirements through API design, frontend, containerisation, and CI/CD without supervision.",
+      "Currently building LLM-integrated fullstack: RAG, vector search, agent orchestration."
+    ]
+  },
+  "stack": [
+    {
+      "category": "Frontend",
+      "items": ["TypeScript", "React", "Next.js", "Angular", "React Query", "Jest", "RTL"]
+    },
+    {
+      "category": "Backend",
+      "items": ["Node.js", "Express", "Java", "Spring Boot", "Spring Security", "Hibernate"]
+    },
+    {
+      "category": "Data & Infra",
+      "items": ["PostgreSQL", "MongoDB", "Docker", "Jenkins", "GitHub Actions", "Linux"]
+    },
+    {
+      "category": "Auth & Security",
+      "items": ["Keycloak", "JWT", "RBAC", "OAuth2"]
+    },
+    {
+      "category": "Messaging & IoT",
+      "items": ["MQTT", "Event-driven architecture", "Real-time pipelines"]
+    },
+    {
+      "category": "AI / LLM",
+      "items": ["Anthropic SDK", "OpenAI SDK", "RAG", "pgvector", "Streaming", "Agents", "Vercel AI SDK"]
+    }
+  ],
+  "experience": [
+    {
+      "id": "european-dynamics",
+      "role": "Full-Stack Software Engineer",
+      "company": "European Dynamics",
+      "location": "Remote (Athens, GR)",
+      "period": "Dec 2022 — Present",
+      "summary": "Full-stack across three EU-funded R&D platforms in cross-functional remote teams of 4–5 engineers.",
+      "highlights": [
+        "Designed and shipped secure REST API endpoints for EnerShare, a European Energy Data Space platform aligned with IDSA/GAIA-X — backend supports 7 pilot deployments and 11 cross-sector use cases.",
+        "Built real-time IoT pipelines over MQTT for the Resonance smart-city platform, unifying sensor ingestion from devices across multiple cities into a centralised backend.",
+        "Implemented end-to-end auth across microservices with Keycloak, JWT, RBAC for the UnderSec secure telemetry platform. Dockerised everything, CI/CD via Jenkins and GitHub Actions.",
+        "Developed React/TypeScript frontends including the Tenacity RMT risk management dashboard with dynamic filtering, data viz, and pattern-analysis reporting."
+      ],
+      "stack": ["Java", "Spring Boot", "Node.js", "TypeScript", "React", "PostgreSQL", "Keycloak", "MQTT", "Docker"]
+    },
+    {
+      "id": "nordeus",
+      "role": "Junior C# / Unity Developer",
+      "company": "Nordeus d.o.o.",
+      "location": "Belgrade, RS",
+      "period": "Jan 2020 — Aug 2021",
+      "summary": "Built gameplay systems and interactive mechanics in C#/Unity for a demo game pitched through an internal startup incubator.",
+      "highlights": [
+        "Built UI components, object behaviour logic, and in-game interaction systems.",
+        "Collaborated in a fast-paced iterative team shipping weekly builds under senior mentorship."
+      ],
+      "stack": ["C#", "Unity"]
+    }
+  ],
+  "projects": [
+    {
+      "id": "enershare",
+      "name": "EnerShare",
+      "tagline": "European Energy Data Space — IDSA/GAIA-X aligned",
+      "description": "EU-funded data space platform for cross-sector energy data exchange. Secure modular REST APIs supporting 7 pilot deployments and 11 use cases across intra-energy and beyond-energy value chains.",
+      "stack": ["Java", "Spring Boot", "PostgreSQL", "Keycloak", "Docker"],
+      "role": "Backend engineer — REST API design, auth, deployment",
+      "status": "production",
+      "links": {}
+    },
+    {
+      "id": "resonance",
+      "name": "Resonance",
+      "tagline": "Smart-city IoT backend over MQTT",
+      "description": "Real-time sensor ingestion from devices across multiple cities into a centralised backend. Marketplace features, backend services, and real-time data pipelines for an R&D production environment.",
+      "stack": ["Java", "Spring Boot", "Node.js", "MQTT", "IoT"],
+      "role": "Fullstack engineer — pipeline + backend services",
+      "status": "production",
+      "links": {}
+    },
+    {
+      "id": "undersec",
+      "name": "UnderSec",
+      "tagline": "Secure MQTT messaging + telemetry ingestion",
+      "description": "Keycloak-based authentication, RBAC enforcement, Dockerised microservices for telemetry ingestion and risk assessment.",
+      "stack": ["Java", "Spring Boot", "MQTT", "Keycloak", "JWT", "Docker"],
+      "role": "Backend engineer — auth, microservices, deployment",
+      "status": "production",
+      "links": {}
+    },
+    {
+      "id": "tenacity-rmt",
+      "name": "Tenacity RMT",
+      "tagline": "Risk management dashboard — dynamic filtering, data viz",
+      "description": "Frontend-heavy risk management tool. Dynamic filtering, detailed reporting dashboards, data visualisation for pattern analysis across security workflows.",
+      "stack": ["React", "TypeScript"],
+      "role": "Frontend engineer",
+      "status": "production",
+      "links": {}
+    },
+    {
+      "id": "travel-radius",
+      "name": "Travel Radius Explorer & Gym App",
+      "tagline": "Personal fullstack projects — React Query, Ant Design, full test coverage",
+      "description": "Full-stack apps with React Query, Ant Design, CI/CD via GitHub Actions, full Jest + React Testing Library coverage.",
+      "stack": ["React", "Next.js", "TypeScript", "Node.js", "Jest", "GitHub Actions"],
+      "role": "Solo — fullstack",
+      "status": "personal",
+      "links": {
+        "github": "https://github.com/vukkt"
+      }
+    }
+  ],
+  "education": [
+    {
+      "title": "Java Spring Boot Master Class",
+      "institution": "Amigoscode",
+      "period": "2022"
+    },
+    {
+      "title": "BSc Civil Engineering",
+      "institution": "University of Belgrade (FTTE)",
+      "period": "2014 — 2019"
+    }
+  ],
+  "languages": [
+    { "name": "Serbian", "level": "Native" },
+    { "name": "English", "level": "Professional working proficiency" }
+  ]
+}

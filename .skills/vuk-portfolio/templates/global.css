@@ -1,0 +1,192 @@
+/* =========================================================
+   global.css — design tokens + base styles
+   Drop into src/styles/global.css and import once in main.tsx
+   ========================================================= */
+
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&display=swap');
+
+/* ---------- design tokens ---------- */
+:root {
+  /* surfaces */
+  --bg: #0a0a0a;
+  --bg-elevated: #111111;
+  --bg-overlay: #161616;
+  --border: #2a2a2a;
+  --border-strong: #3a3a3a;
+
+  /* text */
+  --text-primary: #e6e6e6;
+  --text-secondary: #a0a0a0;
+  --text-muted: #666666;
+
+  /* accents */
+  --accent: #00ff9c;
+  --accent-dim: #00b86f;
+  --accent-glow: rgba(0, 255, 156, 0.15);
+  --warn: #ff6b35;
+  --info: #6ea8fe;
+
+  --success: #00ff9c;
+  --error: #ff4d6d;
+
+  /* typography */
+  --font-mono: 'JetBrains Mono', 'IBM Plex Mono', 'Fira Code', ui-monospace, monospace;
+
+  --font-size-xs: 0.75rem;
+  --font-size-sm: 0.875rem;
+  --font-size-base: 1rem;
+  --font-size-lg: 1.125rem;
+  --font-size-xl: 1.5rem;
+  --font-size-2xl: 2rem;
+  --font-size-3xl: 3rem;
+  --font-size-4xl: 4.5rem;
+
+  --line-height-tight: 1.2;
+  --line-height-base: 1.55;
+  --line-height-relaxed: 1.7;
+
+  --letter-spacing-tight: -0.01em;
+  --letter-spacing-wide: 0.05em;
+  --letter-spacing-wider: 0.12em;
+
+  /* layout */
+  --max-width: 1100px;
+  --page-padding: clamp(1.25rem, 4vw, 3rem);
+  --section-gap: clamp(4rem, 10vw, 8rem);
+}
+
+[data-theme='light'] {
+  --bg: #fafafa;
+  --bg-elevated: #ffffff;
+  --bg-overlay: #f0f0f0;
+  --border: #d4d4d4;
+  --border-strong: #a0a0a0;
+
+  --text-primary: #0a0a0a;
+  --text-secondary: #4a4a4a;
+  --text-muted: #888888;
+
+  --accent: #006847;
+  --accent-dim: #00a86b;
+  --accent-glow: rgba(0, 104, 71, 0.1);
+  --warn: #c2410c;
+  --info: #1e40af;
+
+  --success: #006847;
+  --error: #c91e3a;
+}
+
+/* ---------- reset ---------- */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-family: var(--font-mono);
+  font-size: 16px;
+  background: var(--bg);
+  color: var(--text-primary);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-mono);
+  font-size: var(--font-size-base);
+  line-height: var(--line-height-base);
+  background: var(--bg);
+  color: var(--text-primary);
+  min-height: 100vh;
+}
+
+#root {
+  min-height: 100vh;
+}
+
+a {
+  color: var(--accent);
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+  transition: color 0.2s ease;
+}
+
+a:hover {
+  color: var(--accent-dim);
+}
+
+button {
+  font-family: var(--font-mono);
+  cursor: pointer;
+}
+
+::selection {
+  background: var(--accent);
+  color: var(--bg);
+}
+
+/* ---------- utility classes ---------- */
+.container {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding-left: var(--page-padding);
+  padding-right: var(--page-padding);
+}
+
+.section {
+  padding-top: var(--section-gap);
+  padding-bottom: var(--section-gap);
+}
+
+.label {
+  font-size: var(--font-size-xs);
+  letter-spacing: var(--letter-spacing-wider);
+  text-transform: uppercase;
+  color: var(--text-secondary);
+}
+
+.label-accent {
+  color: var(--accent);
+}
+
+.divider {
+  border: 0;
+  border-top: 1px solid var(--border);
+  margin: 2rem 0;
+}
+
+/* ---------- reduced motion ---------- */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* ---------- scrollbar (subtle, themed) ---------- */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--border);
+  border: 2px solid var(--bg);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--border-strong);
+}

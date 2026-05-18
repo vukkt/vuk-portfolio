@@ -1,0 +1,13 @@
+.about__body {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  max-width: 68ch;
+  margin-top: 1.5rem;
+}
+
+.about__para {
+  font-size: var(--font-size-base);
+  line-height: var(--line-height-relaxed);
+  color: var(--text-secondary);
+}
