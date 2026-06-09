@@ -17,7 +17,7 @@ No test suite is configured.
 
 Single-page React + TypeScript app bundled with Vite. No routes, no state management library.
 
-- **Content**: All portfolio content (identity, hero, experience, projects, education) lives in `src/data/portfolio.ts` as a single typed `PortfolioContent` object. To change what the site says, edit this file — not the components.
+- **Content**: All portfolio content (identity, hero, experience, projects, education) is defined in `.skills/vuk-portfolio/data/portfolio_content.json` — the single source of truth. `src/data/portfolio.ts` is AUTO-GENERATED from it; never edit it by hand. To change what the site says: edit the JSON, then run `node .skills/vuk-portfolio/scripts/sync_portfolio.cjs` to regenerate the typed module.
 - **Components**: One component per section in `src/components/` (Nav, Hero, About, Stack, Experience, Projects, EducationLanguages, Contact), each with a co-located `.css` file. `App.tsx` just composes them in order. Sections use an IntersectionObserver fade-in pattern.
 - **Theming**: `ThemeProvider` (`src/components/ThemeProvider.tsx`) manages a dark/light toggle, persisted to localStorage and applied via a `data-theme` attribute on `<html>`. Styles read CSS custom properties (design tokens) defined in `src/styles/global.css` — dark terminal aesthetic, green accent, JetBrains Mono.
 - **Analytics**: Vercel Analytics is rendered in `App.tsx` via `@vercel/analytics`.

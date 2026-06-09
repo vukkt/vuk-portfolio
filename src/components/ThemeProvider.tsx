@@ -1,15 +1,7 @@
-import { createContext, useContext, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import type { ReactNode } from 'react';
-
-type Theme = 'dark' | 'light';
-
-interface ThemeContextValue {
-  theme: Theme;
-  toggleTheme: () => void;
-  setTheme: (theme: Theme) => void;
-}
-
-const ThemeContext = createContext<ThemeContextValue | undefined>(undefined);
+import { ThemeContext, useTheme } from './theme-context';
+import type { Theme } from './theme-context';
 
 const STORAGE_KEY = 'vuk-portfolio-theme';
 
@@ -22,11 +14,7 @@ function getInitialTheme(): Theme {
 }
 
 export function ThemeProvider({ children }: { children: ReactNode }) {
-  const [theme, setThemeState] = useState<Theme>('dark');
-
-  useEffect(() => {
-    setThemeState(getInitialTheme());
-  }, []);
+  const [theme, setThemeState] = useState<Theme>(getInitialTheme);
 
   useEffect(() => {
     document.documentElement.setAttribute('data-theme', theme);
@@ -41,12 +29,6 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
       {children}
     </ThemeContext.Provider>
   );
-}
-
-export function useTheme(): ThemeContextValue {
-  const ctx = useContext(ThemeContext);
-  if (!ctx) throw new Error('useTheme must be used within ThemeProvider');
-  return ctx;
 }
 
 export function ThemeToggle() {
