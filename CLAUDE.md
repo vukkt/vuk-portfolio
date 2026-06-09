@@ -15,10 +15,20 @@ No test suite is configured.
 
 ## Architecture
 
-Single-page React + TypeScript app bundled with Vite. All portfolio content lives in one file: `src/App.tsx`. There are no routes, no state management, and no component split — everything is a single functional component with inline sections (Hero, About, Experience, Projects, Skills, Contact).
+Single-page React + TypeScript app bundled with Vite. No routes, no state management library.
 
-Styling is plain CSS in `src/index.css` using CSS Grid and `clamp()` for responsiveness. The design uses a dark theme: black background (`#000000`), orange accents (`rgb(255, 87, 10)`), IBM Plex Mono from Google Fonts.
+- **Content**: All portfolio content (identity, hero, experience, projects, education) lives in `src/data/portfolio.ts` as a single typed `PortfolioContent` object. To change what the site says, edit this file — not the components.
+- **Components**: One component per section in `src/components/` (Nav, Hero, About, Stack, Experience, Projects, EducationLanguages, Contact), each with a co-located `.css` file. `App.tsx` just composes them in order. Sections use an IntersectionObserver fade-in pattern.
+- **Theming**: `ThemeProvider` (`src/components/ThemeProvider.tsx`) manages a dark/light toggle, persisted to localStorage and applied via a `data-theme` attribute on `<html>`. Styles read CSS custom properties (design tokens) defined in `src/styles/global.css` — dark terminal aesthetic, green accent, JetBrains Mono.
+- **Analytics**: Vercel Analytics is rendered in `App.tsx` via `@vercel/analytics`.
 
 TypeScript is strict (`strict: true`, `noUnusedParameters: true`). ESLint uses the modern flat config format (`eslint.config.js`).
 
-Vercel Analytics is wired in `src/main.tsx` via the `@vercel/analytics` package.
+## Deployment
+
+Pushing to `main` deploys to both targets automatically:
+
+- **GitHub Pages** via `.github/workflows/deploy.yml`, served at `/vuk-portfolio/`.
+- **Vercel** via its GitHub integration, served at the domain root.
+
+The Vite `base` path is set conditionally in `vite.config.ts` (`/` when `VERCEL` is set, `/vuk-portfolio/` otherwise).
