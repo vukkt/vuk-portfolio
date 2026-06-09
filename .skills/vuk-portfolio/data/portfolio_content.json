@@ -124,6 +124,30 @@
       "links": {}
     },
     {
+      "id": "trinomen",
+      "name": "Trinomen",
+      "tagline": "Three-agent LLM pipeline in the terminal — route, generate, review",
+      "description": "CLI that orchestrates three specialised models: a router classifies the request, a worker generates with intent-scaled token budgets, and an adversarial reviewer on a separate provider audits the code against strict React/TypeScript standards. Optional --loop mode typechecks output in a sandbox and iterates until it passes. Runs entirely on free Groq + Gemini tiers with SQLite token-budget tracking.",
+      "stack": ["Node.js", "Vercel AI SDK", "Groq", "Gemini", "SQLite"],
+      "role": "Solo — architecture, agent orchestration, CLI",
+      "status": "personal",
+      "links": {
+        "github": "https://github.com/vukkt/trinomen"
+      }
+    },
+    {
+      "id": "pr-scout",
+      "name": "PR Scout",
+      "tagline": "CLI that finds and LLM-scores beginner-friendly GitHub issues",
+      "description": "Fetches open good-first-issue tickets from any repository, scores each 0–10 with an LLM on clarity, scope, spam signals, and actionability, and filters out stale projects via star count, commit recency, and merged-PR health checks. Top candidates land in an interactive picker that opens issues straight in the browser. Published on npm, runnable via npx.",
+      "stack": ["TypeScript", "Node.js", "GitHub API", "Groq", "Llama 3.3"],
+      "role": "Solo — design, build, npm release",
+      "status": "personal",
+      "links": {
+        "github": "https://github.com/vukkt/pr-scout"
+      }
+    },
+    {
       "id": "travel-radius",
       "name": "Travel Radius Explorer & Gym App",
       "tagline": "Personal fullstack projects — React Query, Ant Design, full test coverage",

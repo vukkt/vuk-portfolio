@@ -12,7 +12,7 @@ A skill for keeping Vuk Topalovic's portfolio website synced with his CV content
 - **Content source-of-truth**: `data/portfolio_content.json` — derived from Vuk's CV. All portfolio copy comes from here.
 - **Design system**: `references/design_system.md` — colour palette, typography, layout, motion specs.
 - **Component templates**: `templates/` — reference React/CSS files Claude Code can copy or adapt.
-- **Sync script**: `scripts/sync_portfolio.js` — generates a TypeScript/JavaScript data module from the JSON.
+- **Sync script**: `scripts/sync_portfolio.cjs` — generates a TypeScript/JavaScript data module from the JSON.
 
 ## When to use this skill
 
@@ -47,7 +47,7 @@ vuk-portfolio/
 ├── references/
 │   └── design_system.md                  ← palette, type, motion specs
 ├── scripts/
-│   └── sync_portfolio.js                 ← JSON → data module
+│   └── sync_portfolio.cjs                 ← JSON → data module
 └── templates/
     ├── global.css                        ← design tokens + base styles
     ├── ThemeProvider.tsx                 ← theme context + toggle
@@ -62,13 +62,13 @@ vuk-portfolio/
 After editing `data/portfolio_content.json`, run:
 
 ```bash
-node scripts/sync_portfolio.js --target /path/to/portfolio-repo --out src/data/portfolio.ts
+node scripts/sync_portfolio.cjs --target /path/to/portfolio-repo --out src/data/portfolio.ts
 ```
 
 If running from inside the portfolio repo (with the skill installed at `.skills/vuk-portfolio/`):
 
 ```bash
-node .skills/vuk-portfolio/scripts/sync_portfolio.js
+node .skills/vuk-portfolio/scripts/sync_portfolio.cjs
 ```
 
 The script writes a TypeScript module the React app imports from. Components read from `portfolio.ts`, never directly from the JSON.
@@ -78,7 +78,7 @@ The script writes a TypeScript module the React app imports from. Components rea
 When Vuk says "rebuild my portfolio" or this is the first sync:
 
 1. **Read `references/design_system.md`** in full. The aesthetic spec lives there.
-2. **Run `sync_portfolio.js`** to generate the data module in the target project.
+2. **Run `sync_portfolio.cjs`** to generate the data module in the target project.
 3. **Install/update global CSS**: copy `templates/global.css` to `src/styles/global.css` (or wherever the project keeps global styles). Import it once in `main.tsx`.
 4. **Install ThemeProvider**: copy `templates/ThemeProvider.tsx` to `src/components/ThemeProvider.tsx`. Wrap `<App />` in `<ThemeProvider>`. Place `<ThemeToggle />` in the nav/header.
 5. **Build/update section components** using the data from `portfolio.ts`. Sections needed:
@@ -158,5 +158,5 @@ Full spec in `references/design_system.md`. Quick rules:
 - Always read `references/design_system.md` before generating components — design decisions are non-negotiable and live there.
 - Use the templates in `templates/` as reference, not gospel. Adapt to fit the actual project structure.
 - Generated data module location defaults to `src/data/portfolio.ts`. Confirm or override via `--out`.
-- Run `sync_portfolio.js` after any JSON edit. The React app cannot read the JSON directly.
+- Run `sync_portfolio.cjs` after any JSON edit. The React app cannot read the JSON directly.
 - Keep the portfolio strictly two-deep at most (home + project detail pages). Single-page-with-scroll is fine and preferred for now.

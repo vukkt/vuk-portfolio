@@ -7,7 +7,7 @@ A Claude Code skill for keeping Vuk Topalovic's React portfolio synced with his 
 - **Single source of truth.** All portfolio content lives in `data/portfolio_content.json`. Edit there.
 - **Design system codified.** Cyberpunk/terminal palette with light/dark theming, locked in `references/design_system.md`.
 - **Drop-in templates.** Reference React/CSS components in `templates/` for Hero, ProjectCard, ThemeProvider, global styles.
-- **One-command sync.** `sync_portfolio.js` regenerates the data module the React app imports from.
+- **One-command sync.** `sync_portfolio.cjs` regenerates the data module the React app imports from.
 
 ## Install in your portfolio repo
 
@@ -23,7 +23,7 @@ That places the skill at `.skills/vuk-portfolio/`. Claude Code will discover the
 ### Sync content after editing JSON
 
 ```bash
-node .skills/vuk-portfolio/scripts/sync_portfolio.js
+node .skills/vuk-portfolio/scripts/sync_portfolio.cjs
 ```
 
 Writes `src/data/portfolio.ts` by default. Adjust path with `--out`.
@@ -48,7 +48,7 @@ If your portfolio is bare or you want a from-scratch rebuild:
 
 Claude will:
 1. Read `references/design_system.md` for the aesthetic spec
-2. Run `sync_portfolio.js` to generate the data module
+2. Run `sync_portfolio.cjs` to generate the data module
 3. Install global CSS and ThemeProvider
 4. Build/update Hero, About, Stack, Experience, Projects, Contact sections
 5. Hook up the theme toggle in your header
@@ -61,7 +61,7 @@ Claude will:
 ├── README.md                             ← you're here
 ├── data/portfolio_content.json           ← edit your content here
 ├── references/design_system.md           ← palette, typography, motion spec
-├── scripts/sync_portfolio.js             ← regenerate the data module
+├── scripts/sync_portfolio.cjs             ← regenerate the data module
 └── templates/                            ← reference components
     ├── global.css
     ├── ThemeProvider.tsx
