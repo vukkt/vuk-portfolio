@@ -17,15 +17,35 @@ export function Projects() {
     return () => obs.disconnect();
   }, []);
 
+  const featured = portfolio.projects.filter(p => p.featured);
+  const rest = portfolio.projects.filter(p => !p.featured);
+
   return (
     <section id="projects" ref={ref} className="projects section fade-section">
       <div className="container">
         <p className="section-label">04 / projects</p>
-        <div className="projects__grid">
-          {portfolio.projects.map((project, i) => (
-            <ProjectCard key={project.id} project={project} index={i} />
-          ))}
-        </div>
+
+        {featured.length > 0 && (
+          <div className="projects__tier">
+            <p className="projects__tier-label">Featured</p>
+            <div className="projects__grid projects__grid--featured">
+              {featured.map(project => (
+                <ProjectCard key={project.id} project={project} />
+              ))}
+            </div>
+          </div>
+        )}
+
+        {rest.length > 0 && (
+          <div className="projects__tier">
+            <p className="projects__tier-label">Production &amp; personal</p>
+            <div className="projects__grid">
+              {rest.map(project => (
+                <ProjectCard key={project.id} project={project} />
+              ))}
+            </div>
+          </div>
+        )}
       </div>
     </section>
   );

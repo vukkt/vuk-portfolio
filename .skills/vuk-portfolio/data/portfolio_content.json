@@ -17,7 +17,7 @@
     "title": "VUK TOPALOVIC",
     "subtitle": "SENIOR FULL-STACK ENGINEER",
     "pillars": ["PRODUCTION SYSTEMS", "DISTRIBUTED ARCHITECTURE", "AI-INTEGRATED FULLSTACK"],
-    "intro": "I build production systems across the full stack. React, TypeScript, Node.js on the front. Java, Spring Boot, microservices on the back. Currently going deep on LLM-integrated fullstack."
+    "intro": "I build production systems end-to-end — React and TypeScript on the front, Java, Spring Boot, and Node.js on the back. For three years I've shipped EU-funded platforms from architecture to containerised deployment. Now I build LLM-integrated systems: agent orchestration, RAG, and tooling that measures its own cost."
   },
   "about": {
     "summary": [
@@ -84,12 +84,52 @@
   ],
   "projects": [
     {
+      "id": "token-warden",
+      "name": "token-warden",
+      "tagline": "A Claude Code plugin that makes coding agents measurably cheaper over time",
+      "description": "Treats agent memory as an engineering problem: every rule that wants space in an agent's context must prove — on a frozen benchmark — that it saves more tokens than it costs, or it gets evicted. A four-stage loop (collect → distill → benchmark → select) keeps only rules with a measured, positive return, and the collector runs in a fail-open hook that never blocks a session.",
+      "stack": ["TypeScript", "Node.js", "SQLite", "Zod", "Claude Code"],
+      "role": "Solo — design, engine, benchmarking, plugin",
+      "status": "personal",
+      "featured": true,
+      "links": {
+        "github": "https://github.com/vukkt/token-warden"
+      }
+    },
+    {
+      "id": "pr-scout",
+      "name": "PR Scout",
+      "tagline": "CLI that finds and LLM-scores beginner-friendly GitHub issues",
+      "description": "Fetches open good-first-issue tickets from any repository and scores each 0–10 with an LLM on clarity, scope, spam signals, and actionability — filtering out stale projects via star count, commit recency, and merged-PR health checks. Top candidates land in an interactive picker that opens issues straight in the browser.",
+      "stack": ["TypeScript", "Node.js", "GitHub API", "Groq", "Llama 3.3"],
+      "role": "Solo — design, build, npm release",
+      "status": "personal",
+      "featured": true,
+      "links": {
+        "github": "https://github.com/vukkt/pr-scout"
+      }
+    },
+    {
+      "id": "trinomen",
+      "name": "Trinomen",
+      "tagline": "Three-agent LLM pipeline in the terminal — route, generate, review",
+      "description": "A router classifies the request, a worker generates with intent-scaled token budgets, and an adversarial reviewer on a separate provider audits the output against strict React/TypeScript standards. A --loop mode typechecks in a sandbox and iterates until it passes. Benchmarked one-shot vs. compiler-retry vs. full pipeline, then redesigned it gate-first after the ablation showed reviewer-everywhere cost ~5× the tokens for worse results.",
+      "stack": ["Node.js", "Vercel AI SDK", "Zod", "SQLite", "Groq"],
+      "role": "Solo — architecture, agent orchestration, CLI",
+      "status": "personal",
+      "featured": true,
+      "links": {
+        "npm": "https://www.npmjs.com/package/trinomen",
+        "github": "https://github.com/vukkt/trinomen"
+      }
+    },
+    {
       "id": "enershare",
       "name": "EnerShare",
       "tagline": "European Energy Data Space — IDSA/GAIA-X aligned",
-      "description": "EU-funded data space platform for cross-sector energy data exchange. Secure modular REST APIs supporting 7 pilot deployments and 11 use cases across intra-energy and beyond-energy value chains.",
+      "description": "EU-funded data space platform for cross-sector energy data exchange. Secure, modular REST APIs supporting 7 pilot deployments and 11 use cases across intra-energy and beyond-energy value chains.",
       "stack": ["Java", "Spring Boot", "PostgreSQL", "Keycloak", "Docker"],
-      "role": "Backend engineer — REST API design, auth, deployment",
+      "role": "Backend engineer — API design, auth, deployment",
       "status": "production",
       "links": {}
     },
@@ -97,7 +137,7 @@
       "id": "resonance",
       "name": "Resonance",
       "tagline": "Smart-city IoT backend over MQTT",
-      "description": "Real-time sensor ingestion from devices across multiple cities into a centralised backend. Marketplace features, backend services, and real-time data pipelines for an R&D production environment.",
+      "description": "Real-time sensor ingestion from devices across multiple cities into a centralised backend, plus marketplace features and backend services for an R&D production environment.",
       "stack": ["Java", "Spring Boot", "Node.js", "MQTT", "IoT"],
       "role": "Fullstack engineer — pipeline + backend services",
       "status": "production",
@@ -106,8 +146,8 @@
     {
       "id": "undersec",
       "name": "UnderSec",
-      "tagline": "Secure MQTT messaging + telemetry ingestion",
-      "description": "Keycloak-based authentication, RBAC enforcement, Dockerised microservices for telemetry ingestion and risk assessment.",
+      "tagline": "Secure telemetry ingestion with end-to-end auth",
+      "description": "Keycloak-based authentication, RBAC enforcement, and Dockerised microservices for telemetry ingestion and risk assessment across a secure-telemetry platform.",
       "stack": ["Java", "Spring Boot", "MQTT", "Keycloak", "JWT", "Docker"],
       "role": "Backend engineer — auth, microservices, deployment",
       "status": "production",
@@ -116,47 +156,24 @@
     {
       "id": "tenacity-rmt",
       "name": "Tenacity RMT",
-      "tagline": "Risk management dashboard — dynamic filtering, data viz",
-      "description": "Frontend-heavy risk management tool. Dynamic filtering, detailed reporting dashboards, data visualisation for pattern analysis across security workflows.",
+      "tagline": "Risk-management dashboard — dynamic filtering, data viz",
+      "description": "Frontend-heavy risk-management tool with dynamic filtering, detailed reporting dashboards, and data visualisation for pattern analysis across security workflows.",
       "stack": ["React", "TypeScript"],
       "role": "Frontend engineer",
       "status": "production",
       "links": {}
     },
     {
-      "id": "trinomen",
-      "name": "Trinomen",
-      "tagline": "Three-agent LLM pipeline in the terminal — route, generate, review",
-      "description": "CLI that orchestrates three specialised models: a router classifies the request, a worker generates with intent-scaled token budgets, and an adversarial reviewer on a separate provider audits the code against strict React/TypeScript standards. Optional --loop mode typechecks output in a sandbox and iterates until it passes. Runs entirely on free Groq + Gemini tiers with SQLite token-budget tracking.",
-      "stack": ["Node.js", "Vercel AI SDK", "Groq", "Gemini", "SQLite"],
-      "role": "Solo — architecture, agent orchestration, CLI",
-      "status": "personal",
-      "links": {
-        "github": "https://github.com/vukkt/trinomen"
-      }
-    },
-    {
-      "id": "pr-scout",
-      "name": "PR Scout",
-      "tagline": "CLI that finds and LLM-scores beginner-friendly GitHub issues",
-      "description": "Fetches open good-first-issue tickets from any repository, scores each 0–10 with an LLM on clarity, scope, spam signals, and actionability, and filters out stale projects via star count, commit recency, and merged-PR health checks. Top candidates land in an interactive picker that opens issues straight in the browser. Published on npm, runnable via npx.",
-      "stack": ["TypeScript", "Node.js", "GitHub API", "Groq", "Llama 3.3"],
-      "role": "Solo — design, build, npm release",
-      "status": "personal",
-      "links": {
-        "github": "https://github.com/vukkt/pr-scout"
-      }
-    },
-    {
-      "id": "travel-radius",
-      "name": "Travel Radius Explorer & Gym App",
-      "tagline": "Personal fullstack projects — React Query, Ant Design, full test coverage",
-      "description": "Full-stack apps with React Query, Ant Design, CI/CD via GitHub Actions, full Jest + React Testing Library coverage.",
-      "stack": ["React", "Next.js", "TypeScript", "Node.js", "Jest", "GitHub Actions"],
+      "id": "gym-app",
+      "name": "Gym App",
+      "tagline": "Full-stack gym platform — booking, roles, real-time availability",
+      "description": "Role-based access for members, coaches, and admins; class booking with real-time slot availability; Google OAuth and magic-link auth. Unit and e2e suites, Lighthouse CI, deployed on Vercel.",
+      "stack": ["Next.js 15", "Prisma", "PostgreSQL", "NextAuth", "Jest", "Cypress"],
       "role": "Solo — fullstack",
       "status": "personal",
       "links": {
-        "github": "https://github.com/vukkt"
+        "live": "https://gym-app-prod.vercel.app",
+        "github": "https://github.com/vukkt/gym-app"
       }
     }
   ],

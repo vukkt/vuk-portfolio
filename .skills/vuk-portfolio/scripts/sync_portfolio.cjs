@@ -86,6 +86,7 @@ export interface Project {
   stack: string[];
   role: string;
   status: 'production' | 'personal' | 'wip';
+  featured?: boolean;
   links: Record<string, string>;
 }
 
