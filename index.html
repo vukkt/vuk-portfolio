@@ -8,6 +8,46 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <script>
+      /* Paint the right theme before first render (no flash).
+         Condensed mirror of src/components/daylight.ts — it uses a coarse
+         latitude per region instead of the per-zone table, so it can be a few
+         minutes off around sunrise/sunset; React re-resolves on mount. */
+      (function () {
+        try {
+          var mode = localStorage.getItem('vuk-portfolio-theme');
+          if (mode !== 'light' && mode !== 'dark') {
+            var LAT = { Africa: 5, America: 35, Antarctica: -70, Arctic: 78, Asia: 30, Atlantic: 35, Australia: -30, Europe: 50, Indian: -10, Pacific: -15 };
+            var zone = Intl.DateTimeFormat().resolvedOptions().timeZone || '';
+            var lat = LAT[zone.split('/')[0]];
+            if (lat === undefined) lat = 40;
+            var d = new Date();
+            var off = -d.getTimezoneOffset() / 60;
+            var lon = off * 15;
+            var rad = Math.PI / 180;
+            var n = (Date.UTC(d.getFullYear(), d.getMonth(), d.getDate()) - Date.UTC(d.getFullYear(), 0, 0)) / 86400000;
+            var b = (360 / 365) * (n - 81) * rad;
+            var eot = 9.87 * Math.sin(2 * b) - 7.53 * Math.cos(b) - 1.5 * Math.sin(b);
+            var dec = 23.44 * rad * Math.sin(b);
+            var noon = 12 - lon / 15 + off - eot / 60;
+            var cosH = (Math.cos(90.833 * rad) - Math.sin(lat * rad) * Math.sin(dec)) / (Math.cos(lat * rad) * Math.cos(dec));
+            var theme;
+            if (cosH > 1) theme = 'dark';
+            else if (cosH < -1) theme = 'light';
+            else {
+              var H = Math.acos(cosH) / rad / 15;
+              var h = d.getHours() + d.getMinutes() / 60;
+              theme = h >= noon - H && h < noon + H ? 'light' : 'dark';
+            }
+            mode = theme;
+          }
+          document.documentElement.setAttribute('data-theme', mode);
+          document.documentElement.style.colorScheme = mode;
+        } catch (e) {
+          document.documentElement.setAttribute('data-theme', 'dark');
+        }
+      })();
+    </script>
   </head>
   <body>
     <div id="root"></div>
