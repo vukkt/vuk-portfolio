@@ -61,20 +61,21 @@ const contact = [
 ]
   .filter(Boolean)
   .map(item => `<span class="item">${item}</span>`)
-  .join('<span class="sep">·</span>');
+  .join(' <span class="sep">·</span> ');
 
-const skills = stack
+const skills = (cv.skills || stack)
   .map(g => `<div class="skill"><dt>${esc(g.category)}</dt><dd>${g.items.map(esc).join(', ')}</dd></div>`)
   .join('');
 
 const jobs = experience
+  .map(site => ({ ...site, highlights: (cv.highlights && cv.highlights[site.id]) || site.highlights }))
   .map(job => {
-    const meta = [job.period, job.location].filter(Boolean).map(esc).join('<span class="sep">·</span>');
+    const meta = [job.period, job.location].filter(Boolean).map(esc).join(' <span class="sep">·</span> ');
     const bullets = job.highlights.length
       ? `<ul>${job.highlights.map(h => `<li>${highlight(h)}</li>`).join('')}</ul>`
       : '';
     const tech = job.stack.length ? `<p class="tech">${job.stack.map(esc).join(' · ')}</p>` : '';
-    const summary = job.summary ? `<p class="summary">${esc(job.summary)}</p>` : '';
+    const summary = job.summary && !job.highlights.length ? `<p class="summary">${esc(job.summary)}</p>` : '';
     const compact = job.highlights.length ? '' : ' compact';
     return `<article class="job${compact}">
       <header><h3>${esc(job.role)} <span class="org">${esc(job.company)}</span></h3><p class="meta">${meta}</p></header>
@@ -92,9 +93,7 @@ const projectRows = cv.projects
     const heading = i === 0 ? '<h2>Selected projects</h2>' : '';
     return `<article class="project">${heading}
       <header><h3>${esc(p.name)}</h3>${linkHtml}</header>
-      <p class="tagline">${esc(p.tagline)}</p>
-      <p class="body">${esc(p.description)}</p>
-      <p class="tech">${p.stack.map(esc).join(' · ')}</p>
+      <p class="body">${esc((cv.projectBlurbs && cv.projectBlurbs[p.id]) || p.description)} <span class="tech-inline">${p.stack.map(esc).join(' · ')}</span></p>
     </article>`;
   })
   .join('');
@@ -112,54 +111,56 @@ const html = `<!doctype html>
 <meta name="author" content="${esc(identity.name)}">
 <title>${esc(identity.name)} · CV</title>
 <style>
-  @page { size: A4; margin: 14mm 16mm 14mm; }
+  @page { size: A4; margin: 11mm 14mm 10mm; }
   * { box-sizing: border-box; margin: 0; padding: 0; }
   html { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
   body {
     font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-    font-size: 9.6pt; line-height: 1.45; color: #1d1d1f; letter-spacing: -0.003em;
+    font-size: 9.1pt; line-height: 1.38; color: #1d1d1f; letter-spacing: -0.003em;
   }
   a { color: inherit; text-decoration: none; }
-  .sep { color: #a1a1a6; margin: 0 0.45em; }
+  .sep { color: #a1a1a6; margin: 0 0.15em; }
 
-  .top { padding-bottom: 12pt; border-bottom: 1.5pt solid #0066cc; }
+  .top { padding-bottom: 9pt; border-bottom: 1.5pt solid #0066cc; }
   h1 { font-family: -apple-system, 'SF Pro Display', 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-       font-size: 25pt; font-weight: 700; letter-spacing: -0.03em; line-height: 1.05; }
+       font-size: 23pt; font-weight: 700; letter-spacing: -0.03em; line-height: 1.05; }
   .headline { margin-top: 3pt; font-size: 12.5pt; font-weight: 500; color: #0066cc; letter-spacing: -0.01em; }
   .contact { margin-top: 7pt; font-size: 8.8pt; color: #4f4f55; }
   .contact .item { white-space: nowrap; }
 
-  section { margin-top: 13pt; }
+  section { margin-top: 8pt; }
   h2 { font-size: 8pt; font-weight: 700; letter-spacing: 0.09em; text-transform: uppercase; color: #0066cc;
-       margin-bottom: 6pt; }
-  .lede { font-size: 10pt; color: #2c2c30; text-align: justify; hyphens: auto; }
+       margin-bottom: 4.5pt; }
+  .lede { font-size: 9.4pt; color: #2c2c30; text-align: justify; }
 
-  dl.skills { display: grid; grid-template-columns: 1fr; row-gap: 2.5pt; }
+  dl.skills { display: grid; grid-template-columns: 1fr; row-gap: 1.5pt; }
   .skill { display: grid; grid-template-columns: 38mm 1fr; }
   .skill dt { font-weight: 600; }
   .skill dd { color: #3a3a3f; }
 
   .job, .project { break-inside: avoid; }
-  .job + .job, .project + .project { margin-top: 9pt; }
+  .job + .job { margin-top: 6pt; }
+  .project + .project { margin-top: 5pt; }
   .job.compact + .job.compact { margin-top: 5pt; }
   header { display: flex; justify-content: space-between; align-items: baseline; gap: 10pt; }
-  h3 { font-size: 10.4pt; font-weight: 650; letter-spacing: -0.01em; }
+  h3 { font-size: 9.9pt; font-weight: 650; letter-spacing: -0.01em; }
   .org { font-weight: 500; color: #4f4f55; }
   .org::before { content: '· '; color: #a1a1a6; }
   .meta, .plink, .when { flex: none; font-size: 8.8pt; color: #6e6e73; white-space: nowrap; }
   .summary { margin-top: 2pt; color: #3a3a3f; }
-  ul { margin-top: 4pt; padding-left: 10pt; }
-  li { margin-top: 2.5pt; color: #2c2c30; text-align: justify; hyphens: auto; }
+  ul { margin-top: 2.5pt; padding-left: 10pt; }
+  li { margin-top: 1.5pt; color: #2c2c30; text-align: justify; }
   li::marker { color: #0066cc; }
   li strong { color: #1d1d1f; font-weight: 600; }
-  .tech { margin-top: 3.5pt; font-size: 8.6pt; color: #6e6e73; }
-  .project .tagline { margin-top: 0.5pt; font-weight: 500; color: #4f4f55; }
-  .project .body { margin-top: 2pt; color: #2c2c30; text-align: justify; hyphens: auto; }
+  .tech { margin-top: 2.5pt; font-size: 8.3pt; color: #6e6e73; }
+  .tech-inline { font-size: 8.3pt; color: #6e6e73; }
+  .project .body { margin-top: 1pt; color: #2c2c30; text-align: justify; }
 
   .edu { list-style: none; padding: 0; margin: 0; }
   .edu li { display: flex; justify-content: space-between; gap: 10pt; margin-top: 0; text-align: left; }
-  .edu li + li { margin-top: 2.5pt; }
+  .edu li + li { margin-top: 1.5pt; }
   .langs { margin-top: 0; color: #2c2c30; }
+  .closing { display: grid; grid-template-columns: 1fr 64mm; gap: 10mm; }
 </style>
 </head>
 <body>
@@ -173,8 +174,10 @@ const html = `<!doctype html>
   <section><h2>Skills</h2><dl class="skills">${skills}</dl></section>
   <section><h2>Experience</h2>${jobs}</section>
   <section>${projectRows}</section>
-  <section><h2>Education</h2><ul class="edu">${edu}</ul></section>
-  <section><h2>Languages</h2><p class="langs">${langs}</p></section>
+  <div class="closing">
+    <section><h2>Education</h2><ul class="edu">${edu}</ul></section>
+    <section><h2>Languages</h2><p class="langs">${langs.replace(', ', '<br>')}</p></section>
+  </div>
 </body>
 </html>
 `;

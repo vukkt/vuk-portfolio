@@ -115,6 +115,12 @@ export interface CvExtras {
   summary: string;
   /** Project ids, in order, for the CV's "Selected projects". */
   projects: string[];
+  /** Short one-paragraph versions of project descriptions, used by the one-page CV. */
+  projectBlurbs: Record<string, string>;
+  /** Shorter bullets per experience id for the one-page CV. */
+  highlights?: Record<string, string[]>;
+  /** Condensed skill groups for the CV (falls back to the site's stack). */
+  skills?: StackGroup[];
 }
 
 export interface PortfolioContent {
