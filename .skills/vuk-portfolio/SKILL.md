@@ -75,6 +75,17 @@ The script writes a TypeScript module the React app imports from. Components rea
 3. Keep content in the JSON; run `sync_portfolio.cjs` after any change to it.
 4. Verify with `npm run build` and `npm run lint`, and look at the page in both themes at desktop and phone widths.
 
+### Workflow 2b — Rebuild the CV
+
+The CV is rendered from the same JSON (plus its `cv` block), so update content first, then:
+
+```bash
+node .skills/vuk-portfolio/scripts/build_cv.cjs --out public/cv/Vuk_Topalovic_CV.pdf --public   # website copy, no phone
+node .skills/vuk-portfolio/scripts/build_cv.cjs --out ~/Documents/CV/VukTopalovic_CV_Senior_Fullstack_v3.pdf --html   # private copy
+```
+
+Rebuild both after any content change so the downloadable CV matches the site.
+
 ### Workflow 3 — Targeted update
 
 When Vuk asks for a specific change (e.g. "add a new project", "change the green to amber"):

@@ -93,7 +93,7 @@ export interface Project {
   imageAlt?: string;
   stack: string[];
   role: string;
-  status: 'open-source' | 'eu-project' | 'wip';
+  status: 'open-source' | 'eu-project' | 'client' | 'wip';
   featured?: boolean;
   links: Record<string, string>;
 }
@@ -109,6 +109,14 @@ export interface Language {
   level: string;
 }
 
+export interface CvExtras {
+  headline: string;
+  website: string;
+  summary: string;
+  /** Project ids, in order, for the CV's "Selected projects". */
+  projects: string[];
+}
+
 export interface PortfolioContent {
   identity: Identity;
   hero: Hero;
@@ -118,6 +126,7 @@ export interface PortfolioContent {
   projects: Project[];
   education: Education[];
   languages: Language[];
+  cv: CvExtras;
 }
 `;
 

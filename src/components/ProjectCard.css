@@ -93,6 +93,9 @@
 
 .project-card__description {
   margin-top: 1rem;
+  text-align: justify;
+  hyphens: auto;
+  -webkit-hyphens: auto;
   font-size: 0.9375rem;
   line-height: 1.6;
   color: var(--text-secondary);

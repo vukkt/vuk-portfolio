@@ -75,6 +75,9 @@
   position: relative;
   padding-left: 1.125rem;
   font-size: 0.9375rem;
+  text-align: justify;
+  hyphens: auto;
+  -webkit-hyphens: auto;
   line-height: 1.6;
   color: var(--text-secondary);
 }

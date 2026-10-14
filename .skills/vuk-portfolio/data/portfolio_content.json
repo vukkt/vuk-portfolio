@@ -130,13 +130,21 @@
     },
     {
       "id": "freelance",
-      "role": "Full-Stack Developer",
+      "role": "Software Engineer",
       "company": "Freelance",
       "location": "Remote",
-      "period": "",
-      "summary": "Websites and web applications for independent clients.",
-      "highlights": [],
-      "stack": []
+      "period": "2026 — Present",
+      "summary": "Automation and backend work for independent clients.",
+      "highlights": [
+        "Port appointment booking: built a TypeScript and Node.js service for a logistics client that books truck appointments at Saudi land ports through the FASAH platform for a whole team of drivers.",
+        "Slot ranking: orders open slots by each driver's preferred hours, then assigns drivers to distinct slots with min-cost matching (Hungarian algorithm), so they never compete for the same one.",
+        "Reliability: adaptive concurrency that drops to one request at a time under rate limits, per-token budgets, scheduled search windows and detailed logs. Now porting the core to Rust."
+      ],
+      "stack": [
+        "TypeScript",
+        "Node.js",
+        "Rust"
+      ]
     },
     {
       "id": "bosch",
@@ -269,6 +277,20 @@
       "links": {}
     },
     {
+      "id": "port-booking",
+      "name": "Port appointment booking",
+      "tagline": "Books truck appointments at Saudi land ports for a team of drivers.",
+      "description": "Client project. Ranks open slots by each driver's preferred hours and assigns drivers to distinct slots with min-cost matching, with adaptive concurrency under rate limits.",
+      "stack": [
+        "TypeScript",
+        "Node.js",
+        "Rust"
+      ],
+      "role": "Freelance",
+      "status": "client",
+      "links": {}
+    },
+    {
       "id": "trinomen",
       "name": "Trinomen",
       "tagline": "A three-agent LLM pipeline in the terminal: route, generate, review.",
@@ -284,53 +306,6 @@
       "links": {
         "npm": "https://www.npmjs.com/package/trinomen",
         "github": "https://github.com/vukkt/trinomen"
-      }
-    },
-    {
-      "id": "undersec",
-      "name": "UnderSec",
-      "tagline": "Secure telemetry ingestion with end-to-end authentication.",
-      "description": "Keycloak authentication, role-based access and containerised microservices for telemetry ingestion and risk assessment.",
-      "stack": [
-        "Java",
-        "Spring Boot",
-        "Keycloak",
-        "Docker"
-      ],
-      "role": "Backend engineer at European Dynamics",
-      "status": "eu-project",
-      "links": {}
-    },
-    {
-      "id": "tenacity-rmt",
-      "name": "Tenacity RMT",
-      "tagline": "A risk-management dashboard with filtering, charts and reports.",
-      "description": "A React and TypeScript dashboard for analysing patterns across security workflows.",
-      "stack": [
-        "React",
-        "TypeScript"
-      ],
-      "role": "Frontend engineer at European Dynamics",
-      "status": "eu-project",
-      "links": {}
-    },
-    {
-      "id": "gym-app",
-      "name": "Gym App",
-      "tagline": "Class booking and member management for a gym.",
-      "description": "Roles for members, coaches and admins, class booking with live availability, and Google or magic-link sign-in. Covered by unit and end-to-end tests and deployed on Vercel.",
-      "stack": [
-        "Next.js",
-        "Prisma",
-        "PostgreSQL",
-        "NextAuth",
-        "Cypress"
-      ],
-      "role": "Solo project",
-      "status": "open-source",
-      "links": {
-        "live": "https://gym-app-prod.vercel.app",
-        "github": "https://github.com/vukkt/gym-app"
       }
     }
   ],
@@ -355,5 +330,16 @@
       "name": "English",
       "level": "Professional working proficiency"
     }
-  ]
+  ],
+  "cv": {
+    "headline": "Senior Full-Stack Engineer",
+    "website": "https://vuk-portfolio-lac.vercel.app",
+    "summary": "Full-stack engineer who builds web platforms end to end, from the data model and API to the interface. Since 2022 I have worked on EU-funded platforms for energy, buildings, smart cities and secure telemetry at European Dynamics, in small remote teams where I own features from requirements to deployment. I also build and publish developer tools, and I design them to measure their own results.",
+    "projects": [
+      "token-warden",
+      "iglass",
+      "pr-scout",
+      "trinomen"
+    ]
+  }
 }

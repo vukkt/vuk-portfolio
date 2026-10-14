@@ -16,6 +16,9 @@ export function Contact() {
         </p>
         <a href={identity.links.email} className="contact__email">{identity.email}</a>
         <div className="contact__links">
+          <a href={`${import.meta.env.BASE_URL}cv/Vuk_Topalovic_CV.pdf`} target="_blank" rel="noopener" className="button button--glass">
+            CV (PDF)
+          </a>
           <a href={identity.links.github} target="_blank" rel="noopener noreferrer" className="button button--glass">
             GitHub <span aria-hidden="true">↗</span>
           </a>
