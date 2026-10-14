@@ -32,7 +32,7 @@
       },
       {
         "label": "Latest release",
-        "value": "iglass 1.1 · October 2026"
+        "value": "iglass 1.2 · Linux support · October 2026"
       }
     ]
   },
@@ -191,12 +191,12 @@
     {
       "id": "iglass",
       "name": "iglass",
-      "tagline": "A Liquid Glass theme for iTerm2 and Ghostty.",
-      "description": "Brings the macOS Liquid Glass look to the terminal: translucent windows, Apple's system colors and four glass levels from Clear to Solid. Every color is contrast-checked against the window as it looks over the desktop, and uninstalling restores your setup exactly.",
+      "tagline": "A Liquid Glass theme for iTerm2 and Ghostty, on macOS and Linux.",
+      "description": "Brings the macOS Liquid Glass look to the terminal: translucent windows, Apple's system colors and four glass levels from Clear to Solid. In Ghostty on macOS it uses Apple's real Liquid Glass material; on Linux it adapts to whether the desktop can blur. Every color is contrast-checked against the window as it looks over the desktop, and uninstalling restores your setup exactly.",
       "facts": [
-        "Homebrew",
-        "iTerm2 and Ghostty",
-        "Light and dark"
+        "v1.2.0",
+        "158 tests",
+        "macOS and Linux"
       ],
       "image": "projects/iglass.webp",
       "imageAlt": "A translucent Ghostty terminal window using the iglass Frosted theme",
@@ -343,7 +343,7 @@
     ],
     "projectBlurbs": {
       "token-warden": "Claude Code plugin that benchmarks agent-memory rules on a frozen test suite and keeps only those that save at least twice what they cost. About 1,180 tests, 96% line coverage.",
-      "iglass": "Liquid Glass theme for iTerm2 and Ghostty, built from Apple's system colors with every color contrast-checked against the real window. Ships through Homebrew.",
+      "iglass": "Liquid Glass theme for iTerm2 and Ghostty on macOS and Linux, using Apple's real glass material in Ghostty. Every color is contrast-checked; 158 tests. Ships via Homebrew.",
       "pr-scout": "CLI that scores good-first-issue tickets with an LLM for clarity, scope and spam signals, and filters out stale repositories. Published on npm.",
       "trinomen": "Three-agent LLM pipeline (router, worker, cross-provider reviewer). Benchmarks showed full review cost about five times the tokens for worse results, so the loop now typechecks first."
     },
