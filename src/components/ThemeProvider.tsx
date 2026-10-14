@@ -76,43 +76,60 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
   return <ThemeContext.Provider value={value}>{children}</ThemeContext.Provider>;
 }
 
-export function ThemeToggle() {
-  const { mode, theme, cycleTheme } = useTheme();
-  const next = CYCLE[(CYCLE.indexOf(mode) + 1) % CYCLE.length];
+const ICONS: Record<ThemeMode, ReactNode> = {
+  auto: (
+    <svg viewBox="0 0 20 20" aria-hidden="true">
+      <circle cx="10" cy="10" r="6.25" fill="none" stroke="currentColor" strokeWidth="1.5" />
+      <path d="M10 3.75a6.25 6.25 0 0 1 0 12.5z" fill="currentColor" />
+    </svg>
+  ),
+  light: (
+    <svg viewBox="0 0 20 20" aria-hidden="true">
+      <circle cx="10" cy="10" r="3.5" fill="currentColor" />
+      <g stroke="currentColor" strokeWidth="1.5" strokeLinecap="round">
+        <path d="M10 1.75v2M10 16.25v2M1.75 10h2M16.25 10h2M4.17 4.17l1.41 1.41M14.42 14.42l1.41 1.41M4.17 15.83l1.41-1.41M14.42 5.58l1.41-1.41" />
+      </g>
+    </svg>
+  ),
+  dark: (
+    <svg viewBox="0 0 20 20" aria-hidden="true">
+      <path d="M16.5 12.6A7 7 0 0 1 7.4 3.5a7 7 0 1 0 9.1 9.1z" fill="currentColor" />
+    </svg>
+  ),
+};
 
-  const hint = useMemo(() => {
-    if (mode !== 'auto') return `Theme: ${mode}. Switch to ${next}.`;
+const LABELS: Record<ThemeMode, string> = { auto: 'Auto', light: 'Light', dark: 'Dark' };
+
+export function ThemeToggle() {
+  const { mode, theme, setMode } = useTheme();
+
+  const autoHint = useMemo(() => {
     const { sunrise, sunset } = daylightWindow();
     const daylight =
       sunrise === null || sunset === null
         ? theme === 'light'
           ? 'midnight sun where you are'
           : 'polar night where you are'
-        : `sunrise ${formatHour(sunrise)} · sunset ${formatHour(sunset)} where you are`;
-    return `Theme: auto (${theme} — ${daylight}). Switch to ${next}.`;
-  }, [mode, next, theme]);
+        : `sunrise ${formatHour(sunrise)}, sunset ${formatHour(sunset)} where you are`;
+    return `Auto: follows daylight (${daylight})`;
+  }, [theme]);
 
   return (
-    <button
-      type="button"
-      onClick={cycleTheme}
-      title={hint}
-      aria-label={hint}
-      style={{
-        background: 'transparent',
-        border: '1px solid var(--border-strong)',
-        color: 'var(--text-secondary)',
-        fontFamily: 'inherit',
-        fontSize: 'var(--font-size-xs)',
-        letterSpacing: 'var(--letter-spacing-wider)',
-        textTransform: 'uppercase',
-        padding: '0.4rem 0.7rem',
-        cursor: 'pointer',
-        transition: 'border-color 0.2s ease, color 0.2s ease',
-        whiteSpace: 'nowrap',
-      }}
-    >
-      {mode === 'auto' ? `[ auto·${theme} ]` : `[ ${mode} ]`}
-    </button>
+    <div className="theme-toggle" role="radiogroup" aria-label="Appearance">
+      {CYCLE.map(option => (
+        <button
+          key={option}
+          type="button"
+          role="radio"
+          aria-checked={mode === option}
+          aria-label={option === 'auto' ? autoHint : LABELS[option]}
+          title={option === 'auto' ? autoHint : LABELS[option]}
+          className="theme-toggle__option"
+          onClick={() => setMode(option)}
+        >
+          {ICONS[option]}
+        </button>
+      ))}
+    </div>
   );
 }

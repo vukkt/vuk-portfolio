@@ -54,8 +54,9 @@ export interface Identity {
 export interface Hero {
   title: string;
   subtitle: string;
-  pillars: string[];
   intro: string;
+  /** Recruiter-facing quick facts shown beside the hero. */
+  glance: { label: string; value: string }[];
 }
 
 export interface About {
@@ -83,9 +84,16 @@ export interface Project {
   name: string;
   tagline: string;
   description: string;
+  /** Short verifiable facts shown under the description (version, test count...). */
+  facts?: string[];
+  /** Ordered stages drawn as a small pipeline on the card. */
+  steps?: string[];
+  /** Path relative to public/, e.g. "projects/iglass.webp". */
+  image?: string;
+  imageAlt?: string;
   stack: string[];
   role: string;
-  status: 'production' | 'personal' | 'wip';
+  status: 'open-source' | 'eu-project' | 'wip';
   featured?: boolean;
   links: Record<string, string>;
 }

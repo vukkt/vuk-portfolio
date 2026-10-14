@@ -1,12 +1,11 @@
 # Vuk Portfolio Skill
 
-A Claude Code skill for keeping Vuk Topalovic's React portfolio synced with his CV content and styled in a cyberpunk/terminal aesthetic.
+A Claude Code skill for keeping Vuk Topalovic's React portfolio synced with his CV content and styled in an Apple-like Liquid Glass design.
 
 ## What it does
 
 - **Single source of truth.** All portfolio content lives in `data/portfolio_content.json`. Edit there.
-- **Design system codified.** Cyberpunk/terminal palette with light/dark theming, locked in `references/design_system.md`.
-- **Drop-in templates.** Reference React/CSS components in `templates/` for Hero, ProjectCard, ThemeProvider, global styles.
+- **Design system codified.** Liquid Glass tokens and rules in `references/design_system.md`.
 - **One-command sync.** `sync_portfolio.cjs` regenerates the data module the React app imports from.
 
 ## Install in your portfolio repo
@@ -40,19 +39,6 @@ Just talk normally:
 
 Claude reads the SKILL.md, knows the design system, edits the JSON, runs the sync, updates components.
 
-### Initial rebuild
-
-If your portfolio is bare or you want a from-scratch rebuild:
-
-> "Claude, rebuild my portfolio from this skill. Use the templates in `templates/` as reference."
-
-Claude will:
-1. Read `references/design_system.md` for the aesthetic spec
-2. Run `sync_portfolio.cjs` to generate the data module
-3. Install global CSS and ThemeProvider
-4. Build/update Hero, About, Stack, Experience, Projects, Contact sections
-5. Hook up the theme toggle in your header
-
 ## Files
 
 ```
@@ -61,12 +47,7 @@ Claude will:
 ├── README.md                             ← you're here
 ├── data/portfolio_content.json           ← edit your content here
 ├── references/design_system.md           ← palette, typography, motion spec
-├── scripts/sync_portfolio.cjs             ← regenerate the data module
-└── templates/                            ← reference components
-    ├── global.css
-    ├── ThemeProvider.tsx
-    ├── Hero.tsx + Hero.css
-    └── ProjectCard.tsx + ProjectCard.css
+└── scripts/sync_portfolio.cjs             ← regenerate the data module
 ```
 
 ## When to update what
@@ -74,10 +55,10 @@ Claude will:
 | You want to... | Do this |
 |---|---|
 | Change a project description | Edit `data/portfolio_content.json`, run sync |
-| Add a new project | Edit JSON, put new entry at top of `projects[]`, run sync |
-| Change the accent colour | Edit `--accent` in `references/design_system.md` AND in your project's `global.css` |
-| Add a new section | Add data to JSON, sync, create component using templates as reference |
-| Tweak a component's look | Edit the actual component file — templates are reference only, not the source-of-truth |
+| Add a new project | Edit JSON, place it in `projects[]` in display order (`featured: true` for a main card), run sync |
+| Change the accent colour | Edit `--accent` (light and dark) in `src/styles/global.css` |
+| Add a new section | Add data to JSON, sync, create a component in `src/components/` following the existing ones |
+| Tweak a component's look | Edit the component's `.css` file next to it |
 
 ## Gitignore
 

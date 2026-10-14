@@ -2,20 +2,27 @@ import { portfolio } from '../data/portfolio';
 import { ThemeToggle } from './ThemeProvider';
 import './Nav.css';
 
+const LINKS = [
+  { href: '#work', label: 'Work' },
+  { href: '#experience', label: 'Experience' },
+  { href: '#about', label: 'About' },
+  { href: '#contact', label: 'Contact' },
+];
+
 export function Nav() {
   return (
-    <nav className="nav">
-      <div className="container nav__inner">
-        <a href="#" className="nav__brand">{portfolio.identity.handle}</a>
+    <header className="nav">
+      <nav className="nav__bar glass" aria-label="Main">
+        <a href="#top" className="nav__brand">{portfolio.identity.name}</a>
         <ul className="nav__links">
-          <li><a href="#about">about</a></li>
-          <li><a href="#stack">stack</a></li>
-          <li><a href="#experience">experience</a></li>
-          <li><a href="#projects">projects</a></li>
-          <li><a href="#contact">contact</a></li>
+          {LINKS.map(link => (
+            <li key={link.href}>
+              <a href={link.href}>{link.label}</a>
+            </li>
+          ))}
         </ul>
         <ThemeToggle />
-      </div>
-    </nav>
+      </nav>
+    </header>
   );
 }
