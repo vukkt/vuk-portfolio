@@ -138,12 +138,11 @@
       "highlights": [
         "Port appointment booking: built a TypeScript and Node.js service for a logistics client that books truck appointments at Saudi land ports through the FASAH platform for a whole team of drivers.",
         "Slot ranking: orders open slots by each driver's preferred hours, then assigns drivers to distinct slots with min-cost matching (Hungarian algorithm), so they never compete for the same one.",
-        "Reliability: adaptive concurrency that drops to one request at a time under rate limits, per-token budgets, scheduled search windows and detailed logs. Now porting the core to Rust."
+        "Reliability: adaptive concurrency that drops to one request at a time under rate limits, per-token budgets, scheduled search windows and detailed logs."
       ],
       "stack": [
         "TypeScript",
-        "Node.js",
-        "Rust"
+        "Node.js"
       ]
     },
     {
@@ -283,8 +282,7 @@
       "description": "Client project. Ranks open slots by each driver's preferred hours and assigns drivers to distinct slots with min-cost matching, with adaptive concurrency under rate limits.",
       "stack": [
         "TypeScript",
-        "Node.js",
-        "Rust"
+        "Node.js"
       ],
       "role": "Freelance",
       "status": "client",
@@ -356,7 +354,7 @@
       ],
       "freelance": [
         "Port appointment booking: TypeScript and Node.js service that books truck appointments at Saudi land ports (FASAH) for a logistics client's team of drivers.",
-        "Ranks slots by each driver's preferred hours and assigns drivers to distinct slots with min-cost matching (Hungarian algorithm); adaptive concurrency under rate limits. Now porting the core to Rust."
+        "Ranks slots by each driver's preferred hours and assigns drivers to distinct slots with min-cost matching (Hungarian algorithm); adaptive concurrency under rate limits."
       ]
     },
     "skills": [
