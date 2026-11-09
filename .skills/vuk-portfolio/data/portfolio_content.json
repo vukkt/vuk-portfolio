@@ -32,7 +32,7 @@
       },
       {
         "label": "Latest release",
-        "value": "iglass 1.6 · Warp support · October 2026"
+        "value": "iglass 1.7 · tab completion · November 2026"
       }
     ]
   },
@@ -193,7 +193,7 @@
       "tagline": "A Liquid Glass theme for iTerm2, Ghostty, kitty and Warp, on macOS and Linux.",
       "description": "Brings the macOS Liquid Glass look to the terminal: translucent windows, Apple's system colors and four glass levels from Clear to Solid. In Ghostty on macOS it uses Apple's real Liquid Glass material; on Linux it recognizes the desktop and distribution and adapts to whether the desktop can blur. Every color is contrast-checked against the window as it looks over the desktop, and uninstalling restores your setup exactly.",
       "facts": [
-        "v1.6",
+        "v1.7",
         "200+ tests",
         "100+ GitHub stars"
       ],
