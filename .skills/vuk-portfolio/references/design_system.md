@@ -8,13 +8,17 @@ project). The tokens live in `src/styles/global.css`; this file explains how to 
 - **Calm and professional.** Plain, specific copy. No buzzwords, no emoji, no marketing CTAs.
 - **Glass over colour.** A soft, fixed colour field (`.backdrop`) sits behind translucent,
   blurred surfaces (`.glass`). The field is what makes the glass read as glass, so keep it.
+  The field is drawn in WebGL (`src/scene/scene.ts`, three.js) with one blob of liquid glass
+  floating in it; the CSS `.backdrop` paints the same field as the fallback. Both read the
+  `--field-*` tokens, so change colours there, not in the shader.
 - **Light and dark are equals.** Every token has both values. Auto mode follows the
   visitor's local daylight (`daylight.ts`); the toggle is a three-way segmented control.
 - **System fonts.** `-apple-system` / SF Pro first, with Segoe UI and Roboto as fallbacks. No web
   fonts, so there is no font request and no layout shift.
 - **One accent.** Apple system blue (`--accent`). Green only for the availability dot.
-- **Motion is quiet.** A short rise and fade on scroll (`useReveal`), a slight lift on card hover.
-  Both turn off under `prefers-reduced-motion`.
+- **Motion is quiet.** A short rise and fade on scroll (`useReveal`), a slight lift on card hover,
+  and the slow drift of the glass blob. All turn off under `prefers-reduced-motion` (the scene
+  draws one still frame).
 
 ## Tokens (see global.css for values)
 
@@ -43,10 +47,14 @@ project). The tokens live in `src/styles/global.css`; this file explains how to 
 ## Layout
 
 - Max width 1120px, gutter `clamp(1rem, 4vw, 2rem)`. Works down to 320px with no horizontal scroll.
-- Hero: name and intro on the left, an "at a glance" glass card on the right (stacks under 960px).
+- Hero: one full screen. Name and one-line tagline on the left, the glass blob on the right, and
+  the "at a glance" facts as a four-column glass strip along the bottom (two columns under 900px).
+  The blob moves to the right edge once you scroll, so keep headings left-aligned.
 - Work: 12-column grid, featured cards span 6 (one column under 680px). The first two featured
-  projects are the large ones. Non-featured projects go in the compact "More projects" list.
-- Experience: one glass card per role; roles without highlights render as compact rows.
+  projects are the large ones and the only ones that show the long description. Non-featured
+  projects go in the compact "More projects" list.
+- Experience: one glass list, one compact row per role (period, role, summary, stack). The
+  per-project highlights stay in the JSON for the CV and are not repeated on the site.
 
 ## Content rules
 

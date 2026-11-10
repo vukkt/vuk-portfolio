@@ -2,7 +2,6 @@ import type { Project } from '../data/portfolio';
 import { STATUS_LABELS } from './project-labels';
 import './ProjectCard.css';
 
-
 const LINK_LABELS: Record<string, string> = {
   github: 'GitHub',
   npm: 'npm',
@@ -60,7 +59,7 @@ export function ProjectCard({ project, large = false }: Props) {
         />
       )}
 
-      <p className="project-card__description">{project.description}</p>
+      {large && <p className="project-card__description">{project.description}</p>}
 
       {project.facts && project.facts.length > 0 && (
         <ul className="project-card__facts">

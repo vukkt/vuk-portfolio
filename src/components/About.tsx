@@ -39,31 +39,18 @@ export function About() {
         </div>
       </div>
 
-      <div className="about__facts">
-        <div className="about__fact glass">
-          <h3 className="about__card-title">Education</h3>
-          <ul>
-            {education.map(edu => (
-              <li key={edu.title} className="about__fact-row">
-                <span className="about__fact-main">{edu.title}</span>
-                <span className="about__fact-sub">{edu.institution}</span>
-                <span className="about__fact-sub">{edu.period}</span>
-              </li>
-            ))}
-          </ul>
+      <dl className="about__facts glass">
+        {education.map(edu => (
+          <div key={edu.title} className="about__fact">
+            <dt>{edu.title}</dt>
+            <dd>{edu.institution} · {edu.period}</dd>
+          </div>
+        ))}
+        <div className="about__fact">
+          <dt>Languages</dt>
+          <dd>{languages.map(lang => `${lang.name} (${lang.level.toLowerCase()})`).join(' · ')}</dd>
         </div>
-        <div className="about__fact glass">
-          <h3 className="about__card-title">Languages</h3>
-          <ul>
-            {languages.map(lang => (
-              <li key={lang.name} className="about__fact-row">
-                <span className="about__fact-main">{lang.name}</span>
-                <span className="about__fact-sub">{lang.level}</span>
-              </li>
-            ))}
-          </ul>
-        </div>
-      </div>
+      </dl>
     </section>
   );
 }

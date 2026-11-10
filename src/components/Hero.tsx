@@ -15,7 +15,7 @@ export function Hero() {
           {hero.title}
           <span className="hero__subtitle">{hero.subtitle}</span>
         </h1>
-        <p className="hero__intro">{hero.intro}</p>
+        <p className="hero__intro">{identity.tagline}</p>
         <div className="hero__actions">
           <a href="#work" className="button button--primary">See my work</a>
           <a href={identity.links.email} className="button button--glass">Email me</a>

@@ -1,4 +1,5 @@
 import { Analytics } from '@vercel/analytics/react';
+import { Scene } from './components/Scene';
 import { Nav } from './components/Nav';
 import { Hero } from './components/Hero';
 import { Projects } from './components/Projects';
@@ -10,6 +11,7 @@ export default function App() {
   return (
     <>
       <div className="backdrop" aria-hidden="true" />
+      <Scene />
       <Nav />
       <main>
         <Hero />
